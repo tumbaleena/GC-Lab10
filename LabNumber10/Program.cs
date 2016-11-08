@@ -16,7 +16,7 @@ namespace LabNumber10
             ArrayList movies = new ArrayList()
             ;
             string category, cont = "y";
-#region  // Movie List 
+#region  // create and add movies to list
             movies.Add(new Movie("A Bug's Life", "animated", "1"));
             movies.Add(new Movie("Meet the Robinsons", "animated", "1"));
             movies.Add(new Movie("Grandma's Boy", "comedy", "2"));
