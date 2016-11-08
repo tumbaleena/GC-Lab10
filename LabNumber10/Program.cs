@@ -49,10 +49,12 @@ namespace LabNumber10
             Console.Write("What category are you interested in? ");
             category = Console.ReadLine().ToLower();
 
-            foreach (var movie in movies)
+            foreach (Movie movie in movies)
             {
-                if (movies.Contains(category))
-                    { Console.WriteLine(Movie1.getTitle());}
+                if (movie.getCategory() == category)
+                {
+                    Console.WriteLine(movie.getTitle());
+                }
             }
         }
     }
