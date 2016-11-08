@@ -15,11 +15,7 @@ namespace LabNumber10
 
             ArrayList movies = new ArrayList()
             ;
-
-//            ArrayList selection = new ArrayList();
-            string category/*, title*/;
-//            int catNum;
-
+            string category, cont = "y";
 #region  // Movie List 
             Movie Movie1 = new Movie("A Bug's Life", "animated", "1");
             movies.Add(Movie1);
@@ -41,7 +37,6 @@ namespace LabNumber10
             movies.Add(Movie9);
             Movie Movie10 = new Movie("Wreck-It Ralph", "animated", "1");
             movies.Add(Movie10);
-            //       movies.Sort();
             #endregion
             Console.WriteLine("Welcome to the Movie List Application!");
             Console.WriteLine();
@@ -49,13 +44,54 @@ namespace LabNumber10
             Console.Write("What category are you interested in? ");
             category = Console.ReadLine().ToLower();
 
-            foreach (Movie movie in movies)
+            category = ValidateCategory(category);
+
+            ProcessCategory(cont, movies, category);
+        }
+
+        private static void ProcessCategory(string cont, ArrayList movies, string category)
+        {
+            string input;
+            while (cont == "y")
             {
-                if (movie.getCategory() == category)
+                foreach (Movie movie in movies)
                 {
-                    Console.WriteLine(movie.getTitle());
+                    if (movie.getCategory() == category)
+                    {
+                        Console.WriteLine(movie.getTitle());
+                    }
                 }
+
+                Console.WriteLine();
+                Console.Write("Continue? (y/n) ");
+                input = Console.ReadLine().ToLower();
+                cont = input.Substring(0);
+                if (cont == "n")
+                {
+                    Environment.Exit(0);
+                }
+                Console.WriteLine();
+                Console.Write("What category are you interested in? ");
+                category = Console.ReadLine().ToLower();
             }
         }
+
+        private static string ValidateCategory(string category)
+        {
+            switch (category)
+            {
+                case "animated":
+                    break;
+                case "comedy":
+                    break;
+                case "action":
+                    break;
+                default:
+                    Console.Write("Invalid selection, try again: ");
+                    category = Console.ReadLine().ToLower();
+                    break;
+            }
+            return category;
+        }
     }
-}
+    }
